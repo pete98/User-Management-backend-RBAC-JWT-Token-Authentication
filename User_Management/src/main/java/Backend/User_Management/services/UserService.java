@@ -1,6 +1,7 @@
 package Backend.User_Management.services;
 
 import Backend.User_Management.dtos.RegisterUserDTo;
+import Backend.User_Management.dtos.UserDto;
 import Backend.User_Management.entities.Role;
 import Backend.User_Management.entities.RoleEnum;
 import Backend.User_Management.entities.User;
@@ -49,4 +50,14 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+
+    public List<UserDto> getUsersByRole(RoleEnum roleName) {
+        return userRepository.findByRoleName(roleName);
+    }
+
+
+
+
+
 }

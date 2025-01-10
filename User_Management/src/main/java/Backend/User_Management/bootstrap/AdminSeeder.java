@@ -8,11 +8,14 @@ import Backend.User_Management.repository.RoleRepository;
 import Backend.User_Management.repository.UserRepository;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-public class AdminSeeder implements ApplicationListener {
+@Component
+public class AdminSeeder implements ApplicationListener<ContextRefreshedEvent> {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -24,7 +27,7 @@ public class AdminSeeder implements ApplicationListener {
     }
 
     @Override
-    public void onApplicationEvent(ApplicationEvent event) {
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         this.createSuperAdministrator();
     }
 
@@ -42,7 +45,8 @@ public class AdminSeeder implements ApplicationListener {
         }
 
         var user = new User();
-        user.setFullName(user.getFullName());
+        user.setFullName(userDTo.getFullName());
+        user.setEmail(userDTo.getEmail());
         user.setPassword(passwordEncoder.encode(userDTo.getPassword()));
         user.setRole(optionalRole.get());
 

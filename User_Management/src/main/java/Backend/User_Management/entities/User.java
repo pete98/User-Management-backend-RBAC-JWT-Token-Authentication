@@ -34,12 +34,17 @@ public class User implements UserDetails {
     @Column(name = "updated_at")
     private Date updatedAt;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
+
+
 
     public User setRole(Role role){
         this.role = role;
         return this;
     }
+
 
     public long getId() {
         return Id;
@@ -120,4 +125,6 @@ public class User implements UserDetails {
     public String getPassword() {
         return password;
     }
+
+
 }

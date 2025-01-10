@@ -5,13 +5,16 @@ import Backend.User_Management.entities.RoleEnum;
 import Backend.User_Management.repository.RoleRepository;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.ContextClosedEvent;
+import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Map;
+import java.util.Optional;
 
 @Component
-public class RoleSeeder implements ApplicationListener {
+public class RoleSeeder implements ApplicationListener<ContextRefreshedEvent> {
     private final RoleRepository roleRepository;
 
     public RoleSeeder(RoleRepository roleRepository) {
@@ -20,7 +23,7 @@ public class RoleSeeder implements ApplicationListener {
 
 
     @Override
-    public void onApplicationEvent(ApplicationEvent event) {
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         this.loadRoles();
 
     }
@@ -34,11 +37,15 @@ public class RoleSeeder implements ApplicationListener {
         );
 
         Arrays.stream(roleNames).forEach((roleName) -> {
-            Role roleToCreate = new Role();
+            Optional<Role> optionalRole = roleRepository.findByName(roleName);
 
-            roleToCreate.setName(roleName);
-            roleToCreate.setDescription(roleDescriptionMap.get(roleName));
-            roleRepository.save(roleToCreate);
+            optionalRole.ifPresentOrElse(System.out::println, () -> {
+                Role roleToCreate = new Role();
+
+                roleToCreate.setName(roleName);
+                roleToCreate.setDescription(roleDescriptionMap.get(roleName));
+                roleRepository.save(roleToCreate);
+            });
         });
     }
 }

@@ -20,7 +20,6 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
-
     public AuthenticationService(UserRepository userRepository, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.authenticationManager = authenticationManager;
@@ -45,6 +44,7 @@ public class AuthenticationService {
         return userRepository.save(user);
     }
 
+    //user login
     public User authenticate(LoginUserDTo input){
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -56,4 +56,5 @@ public class AuthenticationService {
         return userRepository.findByEmail(input.getEmail())
                 .orElseThrow();
     }
+
 }
