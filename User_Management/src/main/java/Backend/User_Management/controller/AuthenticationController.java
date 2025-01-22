@@ -8,7 +8,9 @@ import Backend.User_Management.services.AuthenticationService;
 import Backend.User_Management.services.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +39,13 @@ public class AuthenticationController {
     public ResponseEntity<LoginResponseDto> authenticate(@RequestBody LoginUserDTo loginUserDTo){
         User authenticatedUser = authenticationService.authenticate(loginUserDTo);
 
-        String jwtToken = jwtService.generateToken(authenticatedUser);
+        String userRole = authenticatedUser.getAuthorities()
+                .stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("USER");
+
+        String jwtToken = jwtService.generateToken(authenticatedUser, userRole);
 
         LoginResponseDto loginResponseDto = new LoginResponseDto();
         loginResponseDto.setToken(jwtToken);

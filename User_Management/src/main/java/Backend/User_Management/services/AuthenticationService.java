@@ -37,6 +37,7 @@ public class AuthenticationService {
         User user = new User();
         user.setFullName(input.getFullName());
         user.setEmail(input.getEmail());
+        user.setPosition(input.getPosition());
         user.setPassword(passwordEncoder.encode(input.getPassword()));
         user.setRole(optionalRole.get());
 

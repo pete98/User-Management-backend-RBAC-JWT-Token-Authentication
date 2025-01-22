@@ -8,10 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,28 +24,55 @@ public class UserController {
 
     @GetMapping("/me")
     @PreAuthorize("isAuthenticated()")
-    public ResponseEntity<User> authenticatedUser(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        User currentUser = (User) authentication.getPrincipal();
-
-        return ResponseEntity.ok(currentUser);
+    public ResponseEntity<UserDto> authenticatedUser(){
+        UserDto userDto = userService.getLoggedInUserDetails();
+        return ResponseEntity.ok(userDto);
     }
 
-//    @GetMapping("/")
-//    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
-//    public ResponseEntity<List<User>> allUsers(){
-//        List<User> users = userService.allUsers();
-//
-//        return ResponseEntity.ok(users);
-//    }
+    @GetMapping("/")
+    @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
+    public ResponseEntity<List<UserDto>> allUsers(){
+        List<UserDto> users = userService.allUsers();
+
+        return ResponseEntity.ok(users);
+    }
 
     //find user by defined role
     @GetMapping("/role/{roleName}")
-    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','SUPER_ADMIN')")
     public List<UserDto> getUsersByRole(@PathVariable RoleEnum roleName) {
         return userService.getUsersByRole(roleName);
     }
+
+    //Delete user
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
+    public ResponseEntity<String> deleteUser(@PathVariable("id") Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.ok("User deleted successfully");
+    }
+
+    //update user
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'SUPER_ADMIN')")
+    public ResponseEntity<UserDto> updateUser(@PathVariable("id") Long id, @RequestBody UserDto updatedUser){
+        UserDto userDto = userService.updateUser(id, updatedUser);
+        return ResponseEntity.ok(userDto);
+    }
+
+    //Find by user id
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> findUserById(@PathVariable("id") Long id){
+        UserDto user = userService.findUserById(id);
+        return ResponseEntity.ok(user);
+
+    }
+
+
+
+
+
+
 
 
 

@@ -16,11 +16,12 @@ import java.util.List;
 public class User implements UserDetails {
 
     @jakarta.persistence.Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(nullable = false)
     private long Id;
 
     private String fullName;
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
@@ -38,7 +39,15 @@ public class User implements UserDetails {
     @JoinColumn(name = "role_id", referencedColumnName = "id", nullable = false)
     private Role role;
 
+    private String position;
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 
     public User setRole(Role role){
         this.role = role;

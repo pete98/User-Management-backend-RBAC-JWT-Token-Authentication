@@ -1,15 +1,30 @@
 package Backend.User_Management.dtos;
 
+import jakarta.persistence.Column;
+
 public class UserDto {
     private Long id;
     private String fullName;
+    @Column(unique = true, nullable = false)
     private String email;
+    private String position;
 
-    public UserDto(Long id, String fullName, String email) {
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
+
+    public UserDto(Long id, String fullName, String email, String position) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
+        this.position = position;
+
     }
+
 
     public Long getId() {
         return id;
