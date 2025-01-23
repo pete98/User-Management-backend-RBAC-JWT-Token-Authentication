@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "e3a16ca8-aca4-477d-9bdb-46f958317889",
+		"name": "User management System",
+		"description": "Collections of rest api to test, and understand nature of api endpoints.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23486310"
+	},
+	"item": [
+		{
+			"name": "signin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": ""
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"super.admin@email.com\",\r\n    \"password\":\"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://apiaa.pranavsailor.com/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\":\"Manish Sailor\",\r\n    \"email\":\"manish@gmail.com\",\r\n    \"password\":\"test123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://apiaa.pranavsailor.com/auth/signup"
+			},
+			"response": []
+		},
+		{
+			"name": "me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9TVVBFUl9BRE1JTiIsInN1YiI6InN1cGVyLmFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTczNzM5Mzg4MywiZXhwIjoxNzM3Mzk3NDgzfQ.j1W2RafjxJYsCAds61wie2-CSl4qDNJnMlbVT_gTonw"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://apiaa.pranavsailor.com/users/me"
+			},
+			"response": []
+		},
+		{
+			"name": "create new admin",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9TVVBFUl9BRE1JTiIsInN1YiI6InN1cGVyLmFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTczNzEwNTE3NCwiZXhwIjoxNzM3MTA4Nzc0fQ.8j5v-KBuXBeOEU57CfW0KHjaJ5tm6AYRhQpbL88QqS8"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"pranav.admin@example.com\",\r\n  \"password\": \"admin123\",\r\n  \"fullName\": \"Pranav Sailor\",\r\n  \"position\":\"Admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://apiaa.pranavsailor.com/admins"
+			},
+			"response": []
+		},
+		{
+			"name": "get all users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9TVVBFUl9BRE1JTiIsInN1YiI6InN1cGVyLmFkbWluQGVtYWlsLmNvbSIsImlhdCI6MTczNzUyMTA1NywiZXhwIjoxNzM3NTI0NjU3fQ.3qgue9RrWHctNFKcDFuqELcviaJw9OKt6D_H0pBvzX8"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "https://apiaa.pranavsailor.com/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "get user by role name \"user\"",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzdXBlci5hZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3MzY1Mjk4MTgsImV4cCI6MTczNjUzMzQxOH0.NLjvVtgazEu5FSsGphcOZf5oW0iOpx4STwZJ7leEunA"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"psailor@gmail.com\",\r\n    \"fullName\" : \"Peter Sailor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://apiaa.pranavsailor.com/users/2"
+			},
+			"response": []
+		}
+	]
+}
