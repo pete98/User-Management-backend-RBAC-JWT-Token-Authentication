@@ -28,5 +28,8 @@ Frontend part of this application is deployed in a seperate repository checkout 
 *   **Spring Security:** Framework for handling authentication and authorization (RBAC and JWT).
 *   **Spring Data JPA:** For interacting with the database.
 *   **JWT Library:** (e.g., jjwt) For generating and validating JWTs.
-*   **Database:** MySQL
+*   **Database**: AWS RDS MYSQL database 
 *   **Maven:** Build tool.
+*   **AWS EC2:** Used for deploying the backend server.
+*   **Netlify** A platform for hosting the frontend website.
+*   **React:** A JavaScript library for building user interfaces.
