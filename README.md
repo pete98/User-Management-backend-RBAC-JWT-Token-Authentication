@@ -1,6 +1,9 @@
 # Employee Management Application
+# um.pranavsailor.com (Website URL)
 
-This is a Spring Boot application that provides a REST API for managing employee data. It features Role-Based Access Control (RBAC) to manage user permissions and JSON Web Token (JWT) authentication for secure access.
+This is a Fullstack Spring Boot application that provides a REST API for managing employee data. It features Role-Based Access Control (RBAC) to manage user permissions and JSON Web Token (JWT) authentication for secure access.
+Frontend part of this application is deployed in a seperate repository checkout user-management-frontend.
+
 
 ## Features
 
