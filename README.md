@@ -1,6 +1,6 @@
 # Employee Management Application
 This is a Fullstack Spring Boot application that provides a REST API for managing employee data. It features Role-Based Access Control (RBAC) to manage user permissions and JSON Web Token (JWT) authentication for secure access.
-Frontend part of this application is deployed in a seperate repository checkout user-management-frontend.
+Frontend part of this application is deployed in a seperate repository, [Front End User Repository](https://github.com/pete98/user-management-system-frontend.git).
 
 # Website URL
 [um.pranavsailor.com](http://um.pranavsailor.com)
@@ -35,5 +35,3 @@ Frontend part of this application is deployed in a seperate repository checkout 
 *   **Netlify** A platform for hosting the frontend website.
 *   **React:** A JavaScript library for building user interfaces.
 
-## Front Repository Link
-[Front End User Repository](https://github.com/pete98/user-management-system-frontend.git)
