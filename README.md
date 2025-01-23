@@ -6,7 +6,6 @@ Frontend part of this application is deployed in a seperate repository checkout 
 [um.pranavsailor.com](http://um.pranavsailor.com)
 
 
-
 ## Features
 
 *   **Employee CRUD Operations:**
@@ -35,3 +34,6 @@ Frontend part of this application is deployed in a seperate repository checkout 
 *   **AWS EC2:** Used for deploying the backend server.
 *   **Netlify** A platform for hosting the frontend website.
 *   **React:** A JavaScript library for building user interfaces.
+
+## Front Repository Link
+[Front End User Repository](https://github.com/pete98/user-management-system-frontend.git)
