@@ -35,3 +35,13 @@ Frontend part of this application is deployed in a seperate repository, [Front E
 *   **Netlify** A platform for hosting the frontend website.
 *   **React:** A JavaScript library for building user interfaces.
 
+## Postman Collection
+
+For testing the backend APIs, a Postman collection is available in the repository. You can import it directly into Postman:
+
+File: User Management System.postman_collection.json
+
+This collection contains all the API endpoints used in the project along with example requests and responses.
+
+
+
