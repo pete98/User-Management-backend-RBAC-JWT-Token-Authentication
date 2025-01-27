@@ -5,7 +5,7 @@ Frontend part of this application is deployed in a seperate repository, [Front E
 # Website URL
 [um.pranavsailor.com](http://um.pranavsailor.com)
 
-### Demo Accounts  
+# Demo Accounts  
 To explore admin and super admin functionality, use the following credentials:  
 
 - **Admin**  
