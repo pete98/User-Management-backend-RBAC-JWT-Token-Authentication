@@ -5,6 +5,17 @@ Frontend part of this application is deployed in a seperate repository, [Front E
 # Website URL
 [um.pranavsailor.com](http://um.pranavsailor.com)
 
+### Demo Accounts  
+To explore admin and super admin functionality, use the following credentials:  
+
+- **Admin**  
+  - Email: `test@admin.com`  
+  - Password: `admin123`  
+
+- **Super Admin**  
+  - Email: `super.admin@email.com'
+  - Password: `123456`  
+
 
 ## Features
 
